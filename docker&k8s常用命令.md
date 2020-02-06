@@ -440,6 +440,18 @@ $ kubectl cluster-info dump --output-directory=/path/to/cluster-state   # 将当
 $ kubectl taint nodes foo dedicated=special-user:NoSchedule
 ```
 
+### etcdctl 常用操作
+
+```shell
+$ etcdctl cluster-health #检查网络集群健康状态
+$ etcdctl --endpoints=https://192.168.71.221:2379 cluster-health #带有安全认证检查网络集群健康状态
+$ etcdctl member list
+$ etcdctl set /k8s/network/config '{ "Network": "10.1.0.0/16" }'
+$ etcdctl get /k8s/network/config
+```
+
+
+
 ## 3.资源类型
 
 下表列出的是 kubernetes 中所有支持的类型和缩写的别名。
