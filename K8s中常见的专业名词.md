@@ -1,5 +1,31 @@
 # K8s中常见的专业名词
 
+## k8s中的主要组件
+
+### etcd
+
+一款开源软件。提供可靠的分布式数据存储服务，用于持久化存储K8s集群的配置和状态
+
+### **apiservice**
+
+用户程序（如kubectl）、K8s其它组件之间通信的接口。K8s其它组件之间不直接通信，而是通过API server通信的。这一点在上图的连接中可以体现，例如，只有API server连接了etcd，即其它组件更新K8s集群的状态时，只能通过API server读写etcd中的数据。
+
+### **Scheduler**
+
+排程组件，为用户应用的每一可部署组件分配工作结点。
+
+### **controller-manager**
+
+执行集群级别的功能，如复制组件、追踪工作结点状态、处理结点失败等。Controller Manager组件是由多个控制器组成的，其中很多控制器是按K8s的资源类型划分的，如Replication Manager（管理ReplicationController 资源），ReplicaSet Controller，PersistentVolume controller。
+
+### **kube-proxy**
+
+在应用组件间负载均衡网络流量。
+
+### **kubelet**
+
+管理工作结点上的容器。
+
 ## 一、Pod
 
 ### 理解Pod
